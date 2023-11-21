@@ -1,0 +1,48 @@
+.searchBarContainer {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+.inputElement {
+  max-width: 100%;
+  font-size: 12px;
+  margin-bottom: 0px;
+  padding-left: 5px;
+  border: none;
+  line-height: 25px;
+  flex-grow: 8;
+}
+
+input:focus {
+  outline: none;
+}
+
+.tagDiv {
+  margin: 2px 0px 2px 2px;
+  padding: 5px;
+  background-color: rgba(252, 112, 112, 0.616);
+  border-radius: 7px;
+}
+
+.tagSpan {
+  font-size: 12px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+
+.xButton {
+  font-size: 14px;
+  /* margin: 2px 2px 2px 0px; */
+  /* padding-bottom: 2px;
+    
+  padding: 2px 3px 1px 0px; */
+  padding-left: 5px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  /* background-color: rgba(252, 112, 112, 0.616); */
+  color: rgb(141, 0, 0);
+  cursor: pointer;
+}

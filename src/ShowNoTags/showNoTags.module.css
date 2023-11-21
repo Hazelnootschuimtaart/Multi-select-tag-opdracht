@@ -1,0 +1,8 @@
+.noResults {
+  width: fit-content;
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  padding: 5px;
+}

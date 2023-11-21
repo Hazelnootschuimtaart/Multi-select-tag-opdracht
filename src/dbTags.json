@@ -1,0 +1,54 @@
+{
+    "tags": [
+        {
+            "id": 1,
+            "title": "github",
+            "body": "GitHub is a web-based hosting service for software development projects that use Git for version control. Use this tag for questions specific to problems with repositories hosted on GitHub, features specific to GitHub, and using GitHub for collaborating with other users. Do not use this tag for Git-related issues simply because a repository happens to be hosted on GitHub."
+        },
+        {
+            "id": 2,
+            "title": "javascript",
+            "body": "For questions about programming in ECMAScript (JavaScript/JS) and its different dialects/implementations (except for ActionScript). Note that JavaScript is NOT Java. Include all tags that are relevant to your question: e.g., [node.js], [jQuery], [JSON], [ReactJS], [angular], [ember.js], [vue.js], [typescript], [svelte], etc."
+        },
+        {
+            "id": 3,
+            "title": "javascript es6",
+            "body": "The 2015 version of the ECMAScript specification, now a standard (ECMAScript 2015). Only use this tag where the question specifically relates to new features or technical changes provided in ECMAScript 2015."
+        },
+        {
+            "id": 4,
+            "title": "react",
+            "body": "React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications."
+        },
+        {
+            "id": 5,
+            "title": "html",
+            "body": "HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and structure of web content. Other technologies besides HTML are generally used to describe a web page's appearance/presentation (CSS) or functionality/behavior (JavaScript)."
+        },
+        {
+            "id": 6,
+            "title": "css",
+            "body": "CSS (Cascading Style Sheets) is a declarative language that controls how webpages look in the browser. It accomplishes this by specifying how HTML elements should appear, including their position, color, fonts, styling, sizing, and layout, and can be used to create visual effects such as shadows."
+        },
+        {
+            "id": 7,
+            "title": "tailwind",
+            "body": "Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. It is a low-level framework that gives you a great deal of flexibility and control over your styles, without needing to provide a default theme."
+        },
+        {
+            "id": 8,
+            "title": "api",
+            "body": "An API (Application Programming Interface) is a collection of protocols and subroutines for building software. APIs allow applications to communicate with each other without requiring developers to share their source code."
+        },
+        {
+            "id": 9,
+            "title": "node.js",
+            "body": "Node.js is an event-based, non-blocking, asynchronous I/O runtime that uses Google's V8 JavaScript engine and libuv library. It is used for developing applications that make heavy use of the ability to run JavaScript both on the client, as well as on server side and therefore benefit from the re-usability of code and the lack of context switching."
+        },
+        {
+            "id": 10,
+            "title": "npm",
+            "body": "npm is the package manager for JavaScript and the world’s largest software registry. It is used to discover, share, and reuse packages of code, as well as to install dependencies in projects. npm is written entirely in JavaScript and was developed by Isaac Z. Schlueter as a result of having “seen module packaging done terribly” and with inspiration from other similar projects such as PEAR (PHP) and CPAN (Perl)."
+        }
+    ]
+}
