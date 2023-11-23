@@ -8,26 +8,35 @@ import data from "./dbTags.json";
 export default function Home() {
     const allTags = data.tags;
     const [inputValue, setInputValue] = useState(""); // Typed value in searchbar
-    const [tagData, setTagData] = useState(allTags); // Collection of tags that match the search value
-    const [clickedTag, setClickedTag] = useState(); // hier array in stoppen/van maken
+    const [tagData, setTagData] = useState(allTags); // Collection of tags that match the search value (all tags if no search value)
+    const [clickedTag, setClickedTag] = useState();
     const [clickedTags, setClickedTags] = useState([]);
-    const maxNumberTags = 4;
+    const maxNumberTags = 4; // True number is +1 higher, so entering 4 is actually max 5 items
 
     useEffect(() => {
-        if (clickedTag !== undefined && clickedTags.length <= maxNumberTags) {
-            setClickedTags((prevState) => ([...prevState, clickedTag]));
-        }
+        // node.js aanklikken, nog een keer aanklikken, verwijderen, en dan weer aanklikken. Dan doet ie het niet. 
+        // Na saven komt hij regelmatig ook weer terug dus dan zit hij nog in de clickedtagsarray
+        let checkTags = clickedTags.find((tag) => {
+            return tag === clickedTag;
+        })
 
+        console.log("clickedTag ", clickedTag);
+        console.log("checkTags ", checkTags);
+
+        if (checkTags == clickedTag) {
+            setClickedTag(undefined);
+        }
+        // deze comments mogen eruit als alles de volgende keer nog werkt
+        if (clickedTag !== undefined && clickedTags.length <= maxNumberTags && checkTags === undefined) {
+            setClickedTags((prevState) => ([...prevState, clickedTag])); // zorgt ervoor dat de clickedTag alsnog wordt toegevoegd!!! Ook als ie verwijderd is!
+            setClickedTag(undefined); // deze komt te laat!
+        }
     }, [clickedTag]);
+    console.log("clickedTags ", clickedTags);
 
     const inputChange = (inputText) => { // this is called if inputfield changes
         setInputValue(inputText);
-        setTagData(allTags);
-    }
-
-    const removeTag = (changedArray) => {
-        setClickedTags(changedArray);
-        setClickedTag(undefined);
+        setTagData(allTags); // tagData is filled with all tags, so the filter will always work with/filter al the tags.
     }
 
     // filters the tags that include the inputvalue and updates the tagData state to only show the ones that match with the inputvalue

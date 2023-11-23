@@ -16,7 +16,7 @@ export default function SearchBar(props) {
             // console.log("removeTag ", removeTag);
             return tagItem !== tag;
         })
-        console.log(filteredArray);
+        console.log("array zonder removed item ", filteredArray);
         props.arrayWithoutRemovedItem(filteredArray);
     }
 
