@@ -1,5 +1,7 @@
 import styles from './fillTagTitle.module.css';
 
+// This component fills/puts the titles in the tags. 
+// If a letter is matching with the searchvalue, it will be underlined (the letters j and g don't show the underline, but actually they are underlined).
 export default function FillTagTitle(props) {
 
     let searchLetters = props.searchLetters; // letters from searchfield

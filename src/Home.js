@@ -10,9 +10,9 @@ export default function Home() {
     const [inputValue, setInputValue] = useState(""); // Typed value in searchbar
     const [tagData, setTagData] = useState(allTags); // Collection of tags that match the search value (all tags if no search value). 
     const [clickedTag, setClickedTag] = useState(); // The current clicked tag
-    const [clickedTags, setClickedTags] = useState([]); // All tags that have to be shown as 'selected/clicked' in the searchbar
-    // const [removeLastItem, setRemoveLastItem] = useState(false);
-    const maxNumberTags = 4; // True number is +1 higher, so entering 4 is actually max 5 items
+    const [clickedTags, setClickedTags] = useState([]); // All tags that have to be shown as 'selected/clicked' in the searchbar.
+    const [changeClickedTitle, setChangeClickedTitle] = useState(); // To track the title of the clicked tag
+    const maxNumberTags = 4; // True number is +1 higher, so entering 4 is actually max 5 items/tags that can be placed in the searchbar.
 
     // checks if the last clicked tag already exists in clickedTags array. If true, clickedTag is set to undefined. If false, the clickedTags-array is updated with the new clicked tag.
     useEffect(() => {
@@ -20,15 +20,15 @@ export default function Home() {
             return tag === clickedTag;
         })
 
-        if (checkTags == clickedTag) {
+        if (checkTags == clickedTag) { // true if the clickedTag is already clicked
             setClickedTag(undefined);
         }
-
+        // if a tag is clicked (= not undefined), the maximum of tags is not reached and the current clicked tag has not already been clicked.
         if (clickedTag !== undefined && clickedTags.length <= maxNumberTags && checkTags === undefined) {
             setClickedTags((prevState) => ([...prevState, clickedTag]));
             setClickedTag(undefined);
         }
-    }, [clickedTag]);
+    }, [changeClickedTitle]);
 
     // this is called if inputfield changes
     const inputChange = (inputText) => {
@@ -36,17 +36,10 @@ export default function Home() {
         setTagData(allTags); // tagData is filled with all tags, so the filter will always work with/filter all the tags.
     }
 
-    // const removeLastTag = (backspacePressed) => {
-    //     if (inputValue == "" && backspacePressed == true) {
-    //         const oldArray = clickedTags;
-    //         oldArray.pop();
-    //         console.log(oldArray);
-    //         setClickedTags(oldArray);
-    //         setClickedTag(undefined);
-    //     }
-    // }
-
-
+    const backspacePress = (newTagsArray) => {
+        setClickedTags(newTagsArray);
+        setClickedTag(undefined);
+    }
 
     // filters the tags that include the inputvalue and updates the tagData state to only show the ones that match with the inputvalue
     useEffect(() => {
@@ -62,21 +55,26 @@ export default function Home() {
         }
     }, [inputValue]);
 
-    console.log("clickedTags ", clickedTags);
-
-    // moet opnieuw renderen, want verandering is nog niet zichtbaar (wel te zien in log).
-    // maar eigenlijk doe ik precies hetzelfde als met het wegklikken met kruisje, waarom doet hij het dan nu niet met de backspace-methode?
-
-
-
     return (
         <>
             <h4 className={styles.header}>Tags</h4>
             <p className={styles.description}>Add up to 5 tags. Start typing to see suggestions.</p>
             <div className={styles.searchContainer} style={{ width: "55%" }}>
-                <SearchBar value={inputValue} removeLastTag={(newTagsArray) => { setClickedTags(newTagsArray) }} handleChange={(value, backspace) => { inputChange(value, backspace) }} clickedTags={clickedTags} arrayWithoutRemovedItem={(array) => { setClickedTags(array) }} />
+                <SearchBar
+                    value={inputValue}
+                    removeLastTag={(newTagsArray) => { backspacePress(newTagsArray) }}
+                    handleChange={(value, backspace) => { inputChange(value, backspace) }}
+                    clickedTags={clickedTags}
+                    arrayWithoutRemovedItem={(array) => { setClickedTags(array) }}
+                />
                 {inputValue.length !== 0 &&
-                    <ShowTags inputText={inputValue} data={tagData} clickedElement={(title) => { setClickedTag(title) }} />
+                    // clicking on tags adds them to the searchbar
+                    <ShowTags
+                        inputText={inputValue}
+                        data={tagData}
+                        clickedElement={(title) => { setClickedTag(title) }}
+                        changeClickedTitle={(title) => { setChangeClickedTitle(title) }}
+                    />
                 }
                 {tagData.length === 0 &&
                     <ShowNoTags />
